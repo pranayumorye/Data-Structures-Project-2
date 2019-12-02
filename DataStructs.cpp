@@ -1,15 +1,10 @@
-#include <string>
-#include "DataStructs.cpp"
-
 using namespace std;
+#include <string>
 
-class Dictionary
+class DataStructs
 {
-    private:
-        string key, value;
-
     public:
-        Dictionary(DataStructs *datastructure);
+        void create();
         bool isEmpty();
         void insert(string key, string value);
         string get(string k);
