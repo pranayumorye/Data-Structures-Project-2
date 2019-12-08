@@ -3,7 +3,7 @@
 using namespace std;
 using namespace std::chrono;
 
-int TCSIZE = 500;
+int TCSIZE = 5000;
 
 
 class Node
@@ -400,19 +400,19 @@ int main()
 
     AVL *avlds = new AVL();
     ofstream filewriter;
-    filewriter.open("tc2AVLtime.txt", std::ios_base::app);
-    cout<<"done\n";
+    filewriter.open("tc3AVLtime.txt", std::ios_base::app);
+
     //iterate over 10 different dictionary sizes
-    for(int i = 0; i<10; i++)
+    // for(int i = 0; i<10; i++)
     {
         int sum = 0;
         //iterate over the testcase values multiple times and calculate their averages
-        for(int j=0; j<100; j++)
+        // for(int j=0; j<100; j++)
         {
             sum += tc2(avlds);
         }
 
-        filewriter<<"Average time for "<<TCSIZE<<" inputs is: "<<double(sum/100.0)<<endl;
+        filewriter<<double(sum)<<endl;
         TCSIZE += 500;
     }
 

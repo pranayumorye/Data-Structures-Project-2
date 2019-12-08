@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 #include<unordered_map>
 
-int TCSIZE = 500;
+int TCSIZE = 5000;
 
 using namespace std;
 using namespace std::chrono;
@@ -221,13 +221,13 @@ int tc3(Trie *trieds)
 
     //delete all the stored words
     auto start = high_resolution_clock::now();
-    for(int i=0; i<TCSIZE; i++)
+    for(int i=0; i<TCSIZE/2; i++)
     {
         trieds->remove(words[i]);
     }
     auto stop = high_resolution_clock::now();
 
-    if(trieds->get("AA") == "") cout<<"Dict is empty\n";
+    //if(trieds->get("AA") == "") cout<<"Dict is empty\n";
 
     auto duration = duration_cast<microseconds>(stop - start);
     string exectime = to_string(duration.count());
@@ -243,19 +243,20 @@ int main(){
 
 Trie *trieds = new Trie();
 ofstream filewriter;
-filewriter.open("tc1Trietime.txt", std::ios_base::app);
+filewriter.open("tc3Trietime.txt", std::ios_base::app);
 
 //iterate over 10 different dictionary sizes
-for(int i = 0; i<10; i++)
+// for(int i = 0; i<10; i++)
 {
     int sum = 0;
     //iterate over the testcase values multiple times and calculate their averages
-    for(int j=0; j<100; j++)
+    // for(int j=0; j<100; j++)
     {
-        sum += tc1(trieds);
+        sum += tc3(trieds);
+        cout<<sum<<endl;
     }
 
-    filewriter<<"Average time for "<<TCSIZE<<" inputs is: "<<double(sum/100.0)<<endl;
+    filewriter<<(sum)<<endl;
     TCSIZE += 500;
     
 }  
