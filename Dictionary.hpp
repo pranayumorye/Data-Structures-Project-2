@@ -1,3 +1,6 @@
+#ifndef DICTIONARY_HPP
+#define DICTIONARY_HPP
+
 #include <string>
 #include "DataStructs.cpp"
 
@@ -7,8 +10,10 @@ class Dictionary
 {
     private:
         string key, value;
+        DataStructs *ds;
 
     public:
+        Dictionary();
         Dictionary(DataStructs *datastructure);
         bool isEmpty();
         void insert(string key, string value);
@@ -16,3 +21,5 @@ class Dictionary
         void remove(string k);
         void destroy();
 };
+
+#endif

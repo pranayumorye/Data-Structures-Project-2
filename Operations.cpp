@@ -1,3 +1,5 @@
+using namespace std;
+
 class Operations {
 	virtual bool isEmpty();
 	virtual void insert(string key, string value);

@@ -1,0 +1,22 @@
+{
+    "files.associations": {
+        "deque": "cpp",
+        "functional": "cpp",
+        "map": "cpp",
+        "set": "cpp",
+        "string": "cpp",
+        "unordered_map": "cpp",
+        "unordered_set": "cpp",
+        "vector": "cpp",
+        "*.tcc": "cpp",
+        "__functional_base": "cpp",
+        "array": "cpp",
+        "istream": "cpp",
+        "locale": "cpp",
+        "memory": "cpp",
+        "thread": "cpp",
+        "tuple": "cpp",
+        "utility": "cpp",
+        "random": "cpp"
+    }
+}

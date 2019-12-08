@@ -11,7 +11,7 @@ int main()
     Dictionary *dict = new Dictionary(dictusingavl);
 
     cout<<dict->isEmpty();
-
+    string a;
     //perform operations using the object created
 
 

@@ -1,40 +1,38 @@
 #include "Dictionary.hpp"
 
-class Dictionary
-{
-    private:
-        DataStructs *ds;
-    public:
 
-        Dictionary(DataStructs *datastructure)
-        {
-            this->ds = datastructure;
-        }
+    Dictionary::Dictionary()
+    {
+        this->ds =  NULL;
+    }
 
-        bool isEmpty()
-        {
-            return ds->isEmpty();
-        }
+    Dictionary::Dictionary(DataStructs *datastructure)
+    {
+        this->ds = datastructure;
+    }
 
-        void insert(string key, string value)
-        {
-            ds->insert(key, value);
-        }
+    bool Dictionary::isEmpty()
+    {
+        return ds->isEmpty();
+    }
 
-        string get(string k)
-        {
+    void Dictionary::insert(string key, string value)
+    {
+        ds->insert(key, value);
+    }
 
-        }
+    string Dictionary::get(string k)
+    {
+        return ds->get(k);
+    }
 
-        void remove(string k)
-        {
+    void Dictionary::remove(string k)
+    {
+        ds->remove(k);
+    }
 
-        }
-
-        void destroy()
-        {
-
-        }
-        
-
-};
+    void Dictionary::destroy()
+    {
+        ds->destroy();
+    }
+    

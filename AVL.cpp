@@ -1,7 +1,9 @@
+#include "math.h"
+#include <string>
+
 #include "Operations.cpp"
 #include "Dictionary.cpp"
-#include "DataStructs.cpp"
-#include "math.h"
+
 
 using namespace std;
 
@@ -225,8 +227,8 @@ void destroyAVL(Node *node)
     if(!node) return;
 
     destroyAVL(node->left);
-    delete node;
     destroyAVL(node->right);
+    delete node;
 }
 
 class AVL: public DataStructs

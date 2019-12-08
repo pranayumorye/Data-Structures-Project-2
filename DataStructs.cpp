@@ -1,13 +1,17 @@
-using namespace std;
+#include "DataStructs.hpp"
 #include <string>
 
-class DataStructs
-{
-    public:
-        void create();
-        bool isEmpty();
-        void insert(string key, string value);
-        string get(string k);
-        void remove(string k);
-        void destroy();
-};
+using namespace std;
+
+void DataStructs::create(){}
+
+bool isEmpty(){
+    return false;
+}
+void DataStructs::insert(string key, string value){}
+string get(string k){
+    return "";
+}
+void DataStructs::remove(string k){}
+
+void DataStructs::destroy(){}
