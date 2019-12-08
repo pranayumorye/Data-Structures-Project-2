@@ -1,6 +1,6 @@
 #include "math.h"
 #include <string>
-
+   
 #include "Operations.cpp"
 #include "Dictionary.cpp"
 
