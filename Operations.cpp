@@ -1,3 +1,6 @@
+#ifndef OPERATIONS_HPP
+#define OPERATIONS_HPP
+
 using namespace std;
 
 class Operations {
@@ -7,3 +10,5 @@ class Operations {
 	virtual void remove(string k);
 	virtual void destroy();
 };
+
+#endif

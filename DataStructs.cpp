@@ -1,13 +1,19 @@
-#include "DataStructs.hpp"
 #include <string>
+#include "DataStructs.hpp"
+
 
 using namespace std;
 
-void DataStructs::create(){}
 
 bool isEmpty(){
     return false;
 }
+
+void DataStructs::create(){
+    cout<<"huh";
+}
+
+
 void DataStructs::insert(string key, string value){}
 string get(string k){
     return "";
