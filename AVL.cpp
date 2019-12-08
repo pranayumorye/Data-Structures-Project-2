@@ -3,7 +3,7 @@
 
 #include "math.h"
 #include <string>
-
+   
 #include "Operations.cpp"
 #include "Dictionary.hpp"
 #include "DataStructs.hpp"
@@ -271,6 +271,9 @@ class AVL: public DataStructs
         }
 
 };
+<<<<<<< HEAD
 
 
 #endif
+=======
+>>>>>>> cd3699a719fce6c0005ddb1886b87552bacaaeb0
