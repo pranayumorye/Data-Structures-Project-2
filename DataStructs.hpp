@@ -1,9 +1,8 @@
 #ifndef DATASTRUCTS_HPP
 #define DATASTRUCTS_HPP
 
+
 #include <string>
-#ifndef OPERATIONS_CPP
-#define OPERATIONS_CPP
 #include "Operations.cpp"
 
 using namespace std;
@@ -19,5 +18,4 @@ class DataStructs
         void destroy();
 };
 
-#endif
 #endif

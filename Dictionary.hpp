@@ -1,8 +1,9 @@
 #ifndef DICTIONARY_HPP
 #define DICTIONARY_HPP
 
+
 #include <string>
-#include "DataStructs.cpp"
+#include "DataStructs.hpp"
 
 using namespace std;
 
@@ -15,7 +16,7 @@ class Dictionary
     public:
         Dictionary();
         Dictionary(DataStructs *datastructure);
-        bool isEmpty();
+        // bool isEmpty();
         void insert(string key, string value);
         string get(string k);
         void remove(string k);

@@ -1,9 +1,12 @@
+#ifndef AVL_CPP
+#define AVL_CPP
+
 #include "math.h"
 #include <string>
 
 #include "Operations.cpp"
-#include "Dictionary.cpp"
-
+#include "Dictionary.hpp"
+#include "DataStructs.hpp"
 
 using namespace std;
 
@@ -241,11 +244,11 @@ class AVL: public DataStructs
             root = NULL;
         }
 
-        bool isEmpty()
-        {
-            if(!root) return true;
-            return false;
-        }
+        // bool isEmpty()
+        // {
+        //     if(!root) return true;
+        //     return false;
+        // }
 
         void insert(string key, string value)
         {
@@ -268,3 +271,6 @@ class AVL: public DataStructs
         }
 
 };
+
+
+#endif

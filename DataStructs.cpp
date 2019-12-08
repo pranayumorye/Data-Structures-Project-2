@@ -1,4 +1,10 @@
+#ifndef DATASTRUCTS_CPP
+#define DATASTRUCTS_CPP
+
+
 #include <string>
+#include <iostream>
+
 #include "DataStructs.hpp"
 
 
@@ -21,3 +27,5 @@ string get(string k){
 void DataStructs::remove(string k){}
 
 void DataStructs::destroy(){}
+
+#endif

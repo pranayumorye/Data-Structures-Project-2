@@ -1,5 +1,6 @@
 #include "AVL.cpp"
 #include "Dictionary.hpp"
+
 #include <iostream>
 
 
@@ -10,7 +11,7 @@ int main()
 
     Dictionary *dict = new Dictionary(dictusingavl);
 
-    cout<<dict->isEmpty();
+    // cout<<dict->isEmpty();
     string a;
     //perform operations using the object created
 

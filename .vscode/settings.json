@@ -17,6 +17,10 @@
         "thread": "cpp",
         "tuple": "cpp",
         "utility": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "__hash_table": "cpp",
+        "iosfwd": "cpp",
+        "iostream": "cpp",
+        "ios": "cpp"
     }
 }

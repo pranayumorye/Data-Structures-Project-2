@@ -1,5 +1,8 @@
-#include "Dictionary.hpp"
+#ifndef DICTIONARY_CPP
+#define DICTIONARY_CPP
 
+
+#include "Dictionary.hpp"
 
     Dictionary::Dictionary()
     {
@@ -11,10 +14,10 @@
         this->ds = datastructure;
     }
 
-    bool Dictionary::isEmpty()
-    {
-        return ds->isEmpty();
-    }
+    // bool Dictionary::isEmpty()
+    // {
+    //     return ds->isEmpty();
+    // }
 
     void Dictionary::insert(string key, string value)
     {
@@ -35,4 +38,5 @@
     {
         ds->destroy();
     }
-    
+
+#endif
