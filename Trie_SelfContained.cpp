@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 #include<unordered_map>
 
-#define TCSIZE 500
+int TCSIZE = 500;
 
 using namespace std;
 using namespace std::chrono;
@@ -49,9 +49,7 @@ TrieNode* removeNode(TrieNode* root,string k,int depth){
         delete(root);
         root = NULL;
     }
-
     return root;
-
 }
 
 void deleteNode(TrieNode* node){
@@ -128,11 +126,11 @@ public:
 
 
 //test insertion of dictionary key-value pairs
-void tc1(Trie *trieds)
+int tc1(Trie *trieds)
 {
     ifstream filereader("words.txt");
-    ofstream filewriter;
-    filewriter.open("tc1Trietime.txt", std::ios_base::app);
+    // ofstream filewriter;
+    // filewriter.open("tc1Trietime.txt", std::ios_base::app);
     string word;
 
 
@@ -146,18 +144,19 @@ void tc1(Trie *trieds)
 
     auto duration = duration_cast<microseconds>(stop - start);
     string exectime = to_string(duration.count());
-    filewriter<<exectime<<"\n";
+    // filewriter<<exectime<<"\n";
 
     filereader.close();
-    filewriter.close();
+    // filewriter.close();
+    return duration.count();
 }
 
 //test search of words, 50% found, 50% not found
-void tc2(Trie *trieds)
+int tc2(Trie *trieds)
 {
     ifstream filereader("words.txt");
-    ofstream filewriter;
-    filewriter.open("tc2Trietime.txt", std::ios_base::app);
+    // ofstream filewriter;
+    // filewriter.open("tc2Trietime.txt", std::ios_base::app);
     string word;
 
     vector<string> words;
@@ -168,7 +167,7 @@ void tc2(Trie *trieds)
         filereader>>word;
         words.push_back(word);
     }
-    cout<<words.size()<<endl;
+    // cout<<words.size()<<endl;
     //insert words
     for(int i=0; i<TCSIZE; i++)
     {
@@ -179,35 +178,36 @@ void tc2(Trie *trieds)
     auto start = high_resolution_clock::now();
     for(int i=0; i<TCSIZE/2; i++)
     {
-        cout<<trieds->get(words[i])<<endl;
+        trieds->get(words[i]);
     }
     //search unavailable words
     for(int i=TCSIZE; i<TCSIZE+250; i++)
     {
-        cout<<trieds->get(words[i]);
+        trieds->get(words[i]);
     }
     auto stop = high_resolution_clock::now();
 
     auto duration = duration_cast<microseconds>(stop - start);
     string exectime = to_string(duration.count());
-    filewriter<<exectime<<"\n";
+    // filewriter<<exectime<<"\n";
 
-    filewriter.close();
+    // filewriter.close();
     filereader.close();
+    return duration.count();
 }
 
 //test deletion of entire dictionary
-void tc3(Trie *trieds)
+int tc3(Trie *trieds)
 {
     ifstream filereader("words.txt");
-    ofstream filewriter;
-    filewriter.open("tc3Trietime.txt", std::ios_base::app);
+    // ofstream filewriter;
+    // filewriter.open("tc3Trietime.txt", std::ios_base::app);
     string word;
 
     vector<string> words;
 
     //store words in a vector
-    for(int i=0; i<TCSIZE+10; i++)
+    for(int i=0; i<TCSIZE*2; i++)
     {
         filereader>>word;
         words.push_back(word);
@@ -227,24 +227,42 @@ void tc3(Trie *trieds)
     }
     auto stop = high_resolution_clock::now();
 
+    if(trieds->get("AA") == "") cout<<"Dict is empty\n";
+
     auto duration = duration_cast<microseconds>(stop - start);
     string exectime = to_string(duration.count());
-    filewriter<<exectime<<"\n";
+    // filewriter<<exectime<<"\n";
 
     filereader.close();
-    filewriter.close();
+    // filewriter.close();
+    return duration.count();
 }
 
 
 int main(){
 
- Trie *trieds = new Trie();
+Trie *trieds = new Trie();
+ofstream filewriter;
+filewriter.open("tc1Trietime.txt", std::ios_base::app);
 
-    // tc1(trieds);
-    // tc2(trieds);
-    tc3(trieds);
+//iterate over 10 different dictionary sizes
+for(int i = 0; i<10; i++)
+{
+    int sum = 0;
+    //iterate over the testcase values multiple times and calculate their averages
+    for(int j=0; j<100; j++)
+    {
+        sum += tc1(trieds);
+    }
 
- return 0;
+    filewriter<<"Average time for "<<TCSIZE<<" inputs is: "<<double(sum/100.0)<<endl;
+    TCSIZE += 500;
+    
+}  
+
+filewriter.close();
+
+return 0;
 }
 
 

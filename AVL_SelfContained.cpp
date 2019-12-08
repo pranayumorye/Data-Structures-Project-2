@@ -1,10 +1,12 @@
 #include<bits/stdc++.h>
-#define TCSIZE 500
 
 using namespace std;
 using namespace std::chrono;
 
-class Node  
+int TCSIZE = 500;
+
+
+class Node
 {  
     public:
     string key;
@@ -207,7 +209,7 @@ Node* deleteNodeAVL(Node* root, string key)
     }  
   
     return root;  
-}  
+}
 
 string getAVL(Node* node, string key)
 {
@@ -280,13 +282,12 @@ class AVL
 
 };
 
-
 //test insertion of dictionary key-value pairs
-void tc1(AVL *avlds)
+int tc1(AVL *avlds)
 {
     ifstream filereader("words.txt");
-    ofstream filewriter;
-    filewriter.open("tc1AVLtime.txt", std::ios_base::app);
+    // ofstream filewriter;
+    // filewriter.open("tc1AVLtime.txt", std::ios_base::app);
     string word;
 
 
@@ -300,18 +301,19 @@ void tc1(AVL *avlds)
 
     auto duration = duration_cast<microseconds>(stop - start);
     string exectime = to_string(duration.count());
-    filewriter<<exectime<<"\n";
+    // filewriter<<exectime<<"\n";
 
     filereader.close();
-    filewriter.close();
+    // filewriter.close();
+    return duration.count();
 }
 
 //test search of words, 50% found, 50% not found
-void tc2(AVL *avlds)
+int tc2(AVL *avlds)
 {
     ifstream filereader("words.txt");
-    ofstream filewriter;
-    filewriter.open("tc2AVLtime.txt", std::ios_base::app);
+    // ofstream filewriter;
+    // filewriter.open("tc2AVLtime.txt", std::ios_base::app);
     string word;
 
     vector<string> words;
@@ -322,7 +324,7 @@ void tc2(AVL *avlds)
         filereader>>word;
         words.push_back(word);
     }
-    cout<<words.size()<<endl;
+    // cout<<words.size()<<endl;
     //insert words
     for(int i=0; i<TCSIZE; i++)
     {
@@ -333,35 +335,36 @@ void tc2(AVL *avlds)
     auto start = high_resolution_clock::now();
     for(int i=0; i<TCSIZE/2; i++)
     {
-        cout<<avlds->get(words[i])<<endl;
+        avlds->get(words[i]);
     }
     //search unavailable words
     for(int i=TCSIZE; i<TCSIZE+250; i++)
     {
-        cout<<avlds->get(words[i]);
+        avlds->get(words[i]);
     }
     auto stop = high_resolution_clock::now();
-
+    avlds->destroy();
     auto duration = duration_cast<microseconds>(stop - start);
     string exectime = to_string(duration.count());
-    filewriter<<exectime<<"\n";
+    // filewriter<<exectime<<"\n";
 
-    filewriter.close();
+    // filewriter.close();
     filereader.close();
+    return duration.count();    
 }
 
 //test deletion of entire dictionary
-void tc3(AVL *avlds)
+int tc3(AVL *avlds)
 {
     ifstream filereader("words.txt");
-    ofstream filewriter;
-    filewriter.open("tc3AVLtime.txt", std::ios_base::app);
+    // ofstream filewriter;
+    // filewriter.open("tc3AVLtime.txt", std::ios_base::app);
     string word;
 
     vector<string> words;
 
     //store words in a vector
-    for(int i=0; i<TCSIZE+10; i++)
+    for(int i=0; i<TCSIZE*2; i++)
     {
         filereader>>word;
         words.push_back(word);
@@ -378,27 +381,40 @@ void tc3(AVL *avlds)
     for(int i=0; i<TCSIZE; i++)
     {
         avlds->remove(words[i]);
+         cout<<"deleted "<<i<<" words\n";
     }
+    cout<<"Done deleting";
     auto stop = high_resolution_clock::now();
 
     auto duration = duration_cast<microseconds>(stop - start);
     string exectime = to_string(duration.count());
-    filewriter<<exectime<<"\n";
+    // filewriter<<exectime<<"\n";
 
     filereader.close();
-    filewriter.close();
+    // filewriter.close();
+    return duration.count();
 }
-
 
 int main()
 {
 
     AVL *avlds = new AVL();
+    ofstream filewriter;
+    filewriter.open("tc2AVLtime.txt", std::ios_base::app);
+    cout<<"done\n";
+    //iterate over 10 different dictionary sizes
+    for(int i = 0; i<10; i++)
+    {
+        int sum = 0;
+        //iterate over the testcase values multiple times and calculate their averages
+        for(int j=0; j<100; j++)
+        {
+            sum += tc2(avlds);
+        }
 
-    tc1(avlds);
-    //tc2(avlds);
-    // tc3(avlds);
+        filewriter<<"Average time for "<<TCSIZE<<" inputs is: "<<double(sum/100.0)<<endl;
+        TCSIZE += 500;
+    }
 
-    avlds->insert("Isha", "P");
-    cout<<avlds->get("Isha")<<endl;
+    filewriter.close();
 }

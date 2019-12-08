@@ -21,6 +21,7 @@
         "__hash_table": "cpp",
         "iosfwd": "cpp",
         "iostream": "cpp",
-        "ios": "cpp"
+        "ios": "cpp",
+        "fstream": "cpp"
     }
 }

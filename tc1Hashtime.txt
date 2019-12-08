@@ -1,14 +1,10 @@
-1276
-731
-718
-1669
-686
-800
-722
-720
-719
-719
-689
-759
-723
-717
+Average time for 500 inputs is: 390.15
+Average time for 1000 inputs is: 711.48
+Average time for 1500 inputs is: 1073.68
+Average time for 2000 inputs is: 1514.38
+Average time for 2500 inputs is: 2113.63
+Average time for 3000 inputs is: 2248.98
+Average time for 3500 inputs is: 2617.71
+Average time for 4000 inputs is: 2964.34
+Average time for 4500 inputs is: 3366.81
+Average time for 5000 inputs is: 3719.74
