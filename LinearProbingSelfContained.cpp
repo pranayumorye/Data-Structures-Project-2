@@ -47,15 +47,19 @@ class HashMapTable
         ht[i] = NULL;
         }
     }
-
-    int HashFunc(int k) {
-        return k % T_S;
-    }
     
     int myHash(string s)
     {
-        hash<string> hashcreater;
-        return hashcreater(s)%T_S;
+        int len = s.length();
+        unsigned int hash = 5381;
+        int c, i=0;
+
+        while (i<len)
+        {
+            c = int(s[i++]);
+            hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
+        }
+        return hash%T_S;
     }
 
 

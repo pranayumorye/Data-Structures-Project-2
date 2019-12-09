@@ -1,5 +1,4 @@
 #include<bits/stdc++.h>
-#include<unordered_map>
 #include <time.h>
 
 int TCSIZE = 500;
@@ -10,7 +9,7 @@ using namespace std;
 class TrieNode{
     public:
     string meaning;
-    unordered_map<char,TrieNode*> child_map;
+    map<char,TrieNode*> child_map;
     bool endOfWord;
 
     TrieNode(){
@@ -56,7 +55,7 @@ TrieNode* removeNode(TrieNode* root,string k,int depth){
 void deleteNode(TrieNode* node){
 
         if(node == NULL) return;
-        for(auto it = node->child_map.begin(); it!= node->child_map.end();it++){
+        for(map<char, TrieNode*>::iterator it = node->child_map.begin(); it!= node->child_map.end();it++){
             deleteNode(it->second);;
         }
         delete(node);
