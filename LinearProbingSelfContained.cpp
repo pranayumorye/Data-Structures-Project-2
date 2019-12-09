@@ -1,8 +1,9 @@
 #include <bits/stdc++.h>
+#include <time.h>
 int TCSIZE = 500;
 
 using namespace std;
-using namespace std::chrono;
+// using namespace std::chrono;
 
 const int T_S = 100000;
 
@@ -121,7 +122,7 @@ class HashMapTable
 
 
 //test insertion of dictionary key-value pairs
-int tc1(HashMapTable hash)
+double tc1(HashMapTable hash)
 {
     ifstream filereader("words.txt");
     // ofstream filewriter;
@@ -129,25 +130,30 @@ int tc1(HashMapTable hash)
     string word;
 
 
-    auto start = high_resolution_clock::now();
+    // auto start = high_resolution_clock::now();
+    clock_t t;
+    t = clock();
     for(int i=0; i<TCSIZE; i++)
     {
         filereader>>word;
         hash.Insert(word, "testvalue");
     }
-    auto stop = high_resolution_clock::now();
+    t = clock() - t;
+    double time_taken = ((double)t);
+    // auto stop = high_resolution_clock::now();
 
-    auto duration = duration_cast<microseconds>(stop - start);
-    string exectime = to_string(duration.count());
+    // auto duration = duration_cast<microseconds>(stop - start);
+    // string exectime = to_string(duration.count());
     // filewriter<<exectime<<"\n";
 
     filereader.close();
     // filewriter.close();
-    return duration.count();
+    // return duration.count();
+    return time_taken;
 }
 
 //test search of words, 50% found, 50% not found
-int tc2(HashMapTable hash)
+double tc2(HashMapTable hash)
 {
     ifstream filereader("words.txt");
     // ofstream filewriter;
@@ -170,7 +176,9 @@ int tc2(HashMapTable hash)
     }
 
     //search available words
-    auto start = high_resolution_clock::now();
+    // auto start = high_resolution_clock::now();
+    clock_t t;
+    t = clock();
     for(int i=0; i<TCSIZE/2; i++)
     {
         hash.SearchKey(words[i]);
@@ -180,19 +188,22 @@ int tc2(HashMapTable hash)
     {
         hash.SearchKey(words[i]);
     }
-    auto stop = high_resolution_clock::now();
+    t = clock() - t;
+    double time_taken = ((double)t);
+    // auto stop = high_resolution_clock::now();
 
-    auto duration = duration_cast<microseconds>(stop - start);
-    string exectime = to_string(duration.count());
+    // auto duration = duration_cast<microseconds>(stop - start);
+    // string exectime = to_string(duration.count());
     // filewriter<<exectime<<"\n";
 
     // filewriter.close();
     filereader.close();
-    return duration.count();
+    // return duration.count();
+    return time_taken;
 }
 
 //test deletion of entire dictionary
-int tc3(HashMapTable hash)
+double tc3(HashMapTable hash)
 {
     ifstream filereader("words.txt");
     // ofstream filewriter;
@@ -215,20 +226,25 @@ int tc3(HashMapTable hash)
     }
 
     //delete all the stored words
-    auto start = high_resolution_clock::now();
+    // auto start = high_resolution_clock::now();
+    clock_t t;
+    t = clock();
     for(int i=0; i<TCSIZE; i++)
     {
         hash.Remove(words[i]);
     }
-    auto stop = high_resolution_clock::now();
+    t = clock() - t;
+    double time_taken = ((double)t);
+    // auto stop = high_resolution_clock::now();
 
-    auto duration = duration_cast<microseconds>(stop - start);
-    string exectime = to_string(duration.count());
+    // auto duration = duration_cast<microseconds>(stop - start);
+    // string exectime = to_string(duration.count());
     // filewriter<<exectime<<"\n";
 
     filereader.close();
     // filewriter.close();
-    return duration.count();
+    // return duration.count();
+    return time_taken;
 }
 
 
@@ -236,16 +252,16 @@ int main()
 {
     HashMapTable hash;
     ofstream filewriter;
-    filewriter.open("tc3Hashtime.txt", std::ios_base::app);
+    filewriter.open("tc1Hashtime.txt", std::ios_base::app);
 
     //iterate over 10 different dictionary sizes
     for(int i = 0; i<10; i++)
     {
-        int sum = 0;
+        double sum = 0.0;
         //iterate over the testcase values multiple times and calculate their averages
         for(int j=0; j<100; j++)
         {
-            sum += tc3(hash);
+            sum += tc1(hash);
         }
         filewriter<<"Average time for "<<TCSIZE<<" inputs is: "<<double(sum/100.0)<<endl;
         TCSIZE += 500;
